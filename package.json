@@ -48,6 +48,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@netlify/angular-runtime": "^3.0.1",
     "@angular/build": "^20.0.0",
     "@angular/cdk": "^20.0.0",
     "@angular/cli": "^20.0.0",
