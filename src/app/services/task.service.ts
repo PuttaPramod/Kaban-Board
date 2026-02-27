@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { signal, computed } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Task } from '../models/task';
 
 @Injectable({
@@ -41,11 +42,15 @@ export class TaskService {
     return allTasks.slice(-5).reverse();
   });
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.loadTasksFromStorage();
   }
 
   private loadTasksFromStorage(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     try {
       const stored = localStorage.getItem('kanban_pro_v2');
       if (stored) {
