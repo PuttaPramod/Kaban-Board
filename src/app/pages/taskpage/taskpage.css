@@ -1084,7 +1084,7 @@
   }
 
   .task-list-container {
-    max-height: 250px;
+    max-height:fit-content;
   }
 
   .modal-content {
